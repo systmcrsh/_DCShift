@@ -1,0 +1,49 @@
+_DCShift 1.0
+A Max for Live audio utility
+
+================================================================
+
+1. WHAT THIS IS
+
+_DCShift is a small utility device that removes DC offset from
+incoming audio -- centering the waveform around zero -- with an
+optional control to deliberately shift it back off-center if you
+want that instead.
+
+================================================================
+
+2. INSTALLING / LOADING THE DEVICE
+
+Drag the provided .amxd file onto a track in Live. It loads as a
+normal, fully editable Max for Live device with one control, a live
+oscilloscope, and a numeric DC-level readout.
+
+================================================================
+
+3. THE CONTROL
+
+DC SHIFT (-1 to 1, default 0)
+At 0 (the default), the incoming audio is corrected to true center --
+any DC offset present in the source is removed. Away from 0, the
+already-corrected signal is deliberately shifted back off-center by
+that amount: positive values shift it up, negative values shift it
+down. This can be useful for intentionally reintroducing a DC offset
+-- for instance, to drive a following synth or effect into a
+different behavior -- rather than just for cleanup.
+
+A note on timing: the correction is a standard filter, not an
+instant snap. After a sudden jump in DC level (e.g. right at the
+start of playback), it takes roughly half a second to fully settle.
+This is normal behavior for this type of filter, not a malfunction.
+
+================================================================
+
+4. THE SCOPE AND READOUT
+
+A live oscilloscope shows the actual output waveform in real time,
+so you can see the correction (or shift) working directly, not just
+hear it. The dcBias readout beneath it shows the actual, measured DC
+level of the output at any moment -- it should read at or very near
+0 when DC Shift is at its default.
+
+================================================================
